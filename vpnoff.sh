@@ -1,26 +1,32 @@
 #!/bin/sh
 
-echo " _____ _        __  __              _           "
-echo "|_   _| |_  ___|  \/  |___ _  _ _ _| |_ ___ _ _ "
-echo "  | | | ' \/ -_) |\/| / _ \ || | ' \  _/ -_) '_|"
-echo "  |_| |_||_\___|_|  |_\___/\_,_|_||_\__\___|_|  "
+GREEN="\e[32m"
+RED="\e[31m"
+MAGENTA="\e[35m"
+CYAN="\e[36m"
+BOLDMAG="\e[1;35m"
+ENDCOLOR="\e[0m"
+
+echo -e "${BOLDMAG} _____ _        __  __              _           ${ENDCOLOR}"
+echo -e "${BOLDMAG}|_   _| |_  ___|  \/  |___ _  _ _ _| |_ ___ _ _ ${ENDCOLOR}"
+echo -e "${BOLDMAG}  | | | ' \/ -_) |\/| / _ \ || | ' \  _/ -_) '_|${ENDCOLOR}"
+echo -e "${BOLDMAG}  |_| |_||_\___|_|  |_\___/\_,_|_||_\__\___|_|  ${ENDCOLOR}"
 
 ismounted=$(grep kkytest /etc/mtab)
-
 theip=$(/home/kky/.local/bin/custom/ipc)
 
 if [[ "$theip" == "$OCIP" ]]; then
-	echo -e "\nChecking mount...\n"
+	echo -e "\n${CYAN}Checking mount...${ENDCOLOR}\n"
 
 	if [[ -z $ismounted ]]; then
-		echo "======================================"
-		echo "Not mounted, Stopping VPNoc..."
-		echo "======================================"
+		echo -e "${GREEN}======================================${ENDCOLOR}"
+		echo -e "${GREEN}Not mounted, Stopping VPNoc...${ENDCOLOR}"
+		echo -e "${GREEN}======================================${ENDCOLOR}"
 		wg-quick down love
 	else
-		echo "======================================"
-		echo "Server's Disk mounted, Unmounting..."
-		echo "======================================"
+		echo -e "${GREEN}======================================${ENDCOLOR}"
+		echo -e "${GREEN}Server's Disk mounted, Unmounting...${ENDCOLOR}"
+		echo -e "${GREEN}======================================${ENDCOLOR}"
 		fusermount -u /home/kky/garbage/notlove
 		echo "DONE (fusermount)"
 		sleep 2s
@@ -29,26 +35,26 @@ if [[ "$theip" == "$OCIP" ]]; then
 		stillmounted=$(grep kkytest /etc/mtab)
 		if [[ -z $stillmounted ]]; then
 			echo -e " not mounted, good\n"
-			echo "=============="
-			echo "VPNout..."
-			echo "=============="
+			echo -e "${GREEN}==============${ENDCOLOR}"
+			echo -e "${GREEN}VPNout...${ENDCOLOR}"
+			echo -e "${GREEN}==============${ENDCOLOR}"
 			wg-quick down love
 			sleep 1s
-			echo -e "\n=============="
-			echo "Mounting..."
-			echo "=============="
+			echo -e "\n${GREEN}==============${ENDCOLOR}"
+			echo -e "${GREEN}Mounting...${ENDCOLOR}"
+			echo -e "${GREEN}==============${ENDCOLOR}"
 			sshfs kkytest@notlove:/home/plexmedia/ /home/kky/garbage/notlove
 			sleep 1s
 			if [[ -z $(grep kkytest /etc/mtab) ]]; then
-				echo "Some problem Occured, manual check requested."
+				echo -e "${RED}Some problem Occured, manual check requested.${ENDCOLOR}"
 			else
 				echo -e "Mounted Succesfully, Directory reads\n"
 			fi
 			ls -la /home/kky/garbage/notlove
 		else
-			echo -e "Unmount problem, manual check requested"
+			echo -e "${RED}Unmount problem, manual check requested${ENDCOLOR}"
 		fi
 	fi
 else
-	echo -e "\nNot connected to the server!"
+	echo -e "\n${RED}Not connected to the server!${ENDCOLOR}"
 fi
