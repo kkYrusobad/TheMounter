@@ -1,5 +1,4 @@
-
-![](https://socialify.git.ci/kkYrusobad/TheMounter/image?description=1&descriptionEditable=A%20script%20that%20connects%20to%20a%20self-hosted%20wireguard%20VPN%20instance%20whilst%20keeping%20check%20of%20mounted%20volumes.&font=Bitter&language=1&name=1&owner=1&theme=Dark)
+![TheMounter](https://socialify.git.ci/kkYrusobad/TheMounter/image?description=1&descriptionEditable=A%20script%20that%20connects%20to%20a%20self-hosted%20wireguard%20VPN%20instance%20whilst%20keeping%20check%20of%20mounted%20volumes.&font=Source%20Code%20Pro&language=1&name=1&owner=1&pattern=Brick%20Wall&theme=Dark)
 
 ## Authors
 
