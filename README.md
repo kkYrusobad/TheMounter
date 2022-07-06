@@ -12,7 +12,7 @@ Suppose we have a network drive mounted with ip-1 (not connected to the VPN). No
 ### Solution?
 
 Everytime this script is executed (either one), It checks for any mounted volumes (if exists).
-- if yes, then it unmounts the drive --> connects to the VPN --> mounts it back.
+- if yes, then it unmounts the drive ▶️ connects to the VPN ▶️ mounts it back.
 - if not, then connects to VPN.
 
 This happens when disconnecting from the VPN as well.
