@@ -7,7 +7,7 @@
 
 ## Mounts... Why?
 
-Suppose we have a network drive mounted with ip-1 (not connected to the VPN). Now if we connect to VPN without unmounting the drive first, mount point won't work as intended.
+Suppose we have a network drive mounted with ip-1 (not connected to the VPN). Now if we connect to VPN without unmounting the drive first, mount point won't work as intended because of the public IP change (say ip-2). Changing public IPs like this makes applications running processes dependent on volume and directory end point unusable (fusermount can be used to umount volume in this case).  
 
 ### Solution?
 
