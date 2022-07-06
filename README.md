@@ -1,7 +1,7 @@
 
 # TheMounter
 
-Script that connects me to my own wireguard VPN instance running on cloud without hassel. Also, handles mounted volumes, if any (why? read below).
+A script that connects me to my own wireguard VPN instance running on the cloud without hassle. Also, handles mounted volumes, if any (why? read below).
  
 
 
